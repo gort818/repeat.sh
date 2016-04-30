@@ -1,4 +1,7 @@
 #!/bin/bash
+# Simple bash script to allow one to run a command multiple times
+# The first argument is the amount of this you would like the command to run.
+# The second argument is the command you would like to run, it must be encapsulated in quotation marks
 
 start=$(date +%s.%N)
 
