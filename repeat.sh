@@ -1,3 +1,4 @@
+
 #!/bin/bash
 # Simple bash script to allow one to run a command multiple times
 # The first argument is the amount of this you would like the command to run.
@@ -13,7 +14,7 @@ if [ $# -ne 2 ]
 
 
   else
-	if  echo "$1" | grep '^[^1-9]$' > /dev/null 
+	if  [[ $1 = *[!0-9]* ]];
 		then
 		echo "First argument must be an integer"
 		exit 2 # not a valid integer 
@@ -24,13 +25,14 @@ echo "
 	The command will be repeated $count times
      "
 
+command=$(echo "$2")
+
 while [ $count -ge 1 ]
 do
-	($2)
+	 eval $command
 	count=$(( count-1 ))
 	
 done
 dur=$(echo "$(date +%s.%N) - $start" | bc)
 
 printf "Execution time: %.6f seconds\n" $dur
-
